@@ -1,0 +1,16 @@
+{
+	"genericName": "Greave",
+	"description": "Greave to protect shin from crushing damage.",
+	"cost": {
+		"wood": 100,
+		"metal": 100
+	},
+	"icon": "shields_generic_wood.png",
+	"researchTime": 40,
+	"tooltip": "Soldiers +1 crush resistance.",
+	"modifications": [
+		{ "value": "Resistance/Entity/Damage/Crush", "add": 1 }
+	],
+	"affects": ["Soldier"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}
