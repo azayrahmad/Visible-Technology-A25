@@ -5,6 +5,7 @@ VisibleTechnology.prototype.Schema =
 	"<a:example>" +
 		"<Greave>" +
 			"<RequiredTechnology>soldier_resistance_crush_01</RequiredTechnology>" +
+			"<VariantCount>3</VariantCount>" +
 		"</Greave>" +
 	"</a:example>" +
 	"<oneOrMore>" +
@@ -14,51 +15,58 @@ VisibleTechnology.prototype.Schema =
 				"<element name='RequiredTechnology' a:help='Name of a technology which must be researched before the entity actor can be updated.'>" +
 					"<text/>" +
 				"</element>" +
+				"<optional>" +
+					"<element name='VariantCount' a:help='The number of available variant for the technology.'>" +
+						"<data type='nonNegativeInteger'/>" +
+					"</element>" +
+				"</optional>" +
 			"</interleave>" +
 		"</element>" +
 	"</oneOrMore>";
 
 VisibleTechnology.prototype.Init = function()
 {
-	warn("VisibleTechnology initialized")
-	this.UpdateActor()
 };
 
 VisibleTechnology.prototype.UpdateActor = function()
 {
- 	warn("UpdateActor Started")
-
-	let cmpTechnologyManager = Engine.QueryInterface(this.entity, IID_TechnologyManager);
+	let cmpTechnologyManager = QueryOwnerInterface(this.entity, IID_TechnologyManager);
 	if (!cmpTechnologyManager)
 		return;
-	warn("cmpTechnologyManager loaded")
 
 	let cmpVisual = Engine.QueryInterface(this.entity, IID_Visual);
 	if (!cmpVisual)
 		return;
-	warn("cmpVisual loaded")
 
 	for (let tech in this.template)
 	{
-		warn("visible tech status of " + tech)
+		let variantCount = +(this.template[tech].VariantCount || 1)
+
 		if (cmpTechnologyManager.IsTechnologyResearched(this.template[tech].RequiredTechnology))
 		{
-			cmpVisual.SetVariant(tech, tech + "1");
-			warn(tech + " researched")
+			cmpVisual.SetVariant(tech, tech + randIntInclusive(1, variantCount));
 		}
 		else
 		{
 			cmpVisual.SetVariant(tech, tech + "0");
-			warn(tech + "not researched")
 		}
 	}
 }
 
-VisibleTechnology.prototype.OnResearchFinished = function(msg)
+VisibleTechnology.prototype.OnOwnershipChanged = function()
 {
-	warn("VisibleTechnology on research finished")
+	if (this.initialized)
+	  return;
 	this.UpdateActor()
+	this.initialized = true;
 };
 
+VisibleTechnology.prototype.OnGlobalResearchFinished = function(msg)
+{
+	const cmpOwnership = Engine.QueryInterface(this.entity, IID_Ownership);
+	if (cmpOwnership.GetOwner() !== msg.player)
+	  return;
+	this.UpdateActor()
+};
 
 Engine.RegisterComponentType(IID_VisibleTechnology, "VisibleTechnology", VisibleTechnology);
