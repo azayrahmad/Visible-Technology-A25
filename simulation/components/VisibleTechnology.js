@@ -16,7 +16,7 @@ VisibleTechnology.prototype.Schema =
 					"<text/>" +
 				"</element>" +
 				"<optional>" +
-					"<element name='VariantCount' a:help='The number of available variant for the technology.'>" +
+					"<element name='VariantCount' a:help='The number of available variant for the technology. Defaults to 1'>" +
 						"<data type='nonNegativeInteger'/>" +
 					"</element>" +
 				"</optional>" +
@@ -41,15 +41,9 @@ VisibleTechnology.prototype.UpdateActor = function()
 	for (let tech in this.template)
 	{
 		let variantCount = +(this.template[tech].VariantCount || 1)
+		let isResearched = cmpTechnologyManager.IsTechnologyResearched(this.template[tech].RequiredTechnology)
 
-		if (cmpTechnologyManager.IsTechnologyResearched(this.template[tech].RequiredTechnology))
-		{
-			cmpVisual.SetVariant(tech, tech + randIntInclusive(1, variantCount));
-		}
-		else
-		{
-			cmpVisual.SetVariant(tech, tech + "0");
-		}
+		cmpVisual.SetVariant(tech, tech + (isResearched ? randIntInclusive(1, variantCount) : 0));
 	}
 }
 

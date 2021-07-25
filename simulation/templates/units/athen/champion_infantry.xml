@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="civ/athen|hoplite|template_unit_champion_infantry_spearman">
+  <Identity>
+    <GenericName>City Guard</GenericName>
+    <SpecificName>Epílektos</SpecificName>
+    <Icon>units/athen_champion_infantry.png</Icon>
+  </Identity>
+  <VisibleTechnology>
+    <xiphos>
+		<RequiredTechnology>soldier_attack_melee_01</RequiredTechnology>
+	</xiphos>
+  </VisibleTechnology>
+  <VisualActor>
+    <Actor>units/athenians/infantry_spearman_c.xml</Actor>
+  </VisualActor>
+</Entity>

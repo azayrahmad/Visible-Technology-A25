@@ -34,31 +34,43 @@
       </textures>
     </variant>
     <variant frequency="2" name="hele-tunic-3a">
+      <props>
+        <prop actor="props/units/armor/greave_11_bronze_l.xml" attachpoint="leg_L"/>
+      </props>
       <textures>
         <texture file="skeletal/hele_tunic_3_a.png" name="baseTex"/>
       </textures>
     </variant>
     <variant frequency="1" name="hele-tunic-3b">
+      <props>
+        <prop actor="props/units/armor/greave_11_bronze_l.xml" attachpoint="leg_L"/>
+      </props>
       <textures>
         <texture file="skeletal/hele_tunic_3_b.png" name="baseTex"/>
       </textures>
     </variant>
     <variant frequency="3" name="hele-tunic-3c">
+      <props>
+        <prop actor="props/units/armor/greave_11_bronze_l.xml" attachpoint="leg_L"/>
+      </props>
       <textures>
         <texture file="skeletal/hele_tunic_3_c.png" name="baseTex"/>
       </textures>
     </variant>
     <variant frequency="2" name="hele-tunic-4a">
+      <props>
+        <prop actor="props/units/armor/greave_11_bronze_l.xml" attachpoint="leg_L"/>
+      </props>
       <textures>
         <texture file="skeletal/hele_tunic_4_a.png" name="baseTex"/>
       </textures>
     </variant>
   </group>
   <group>
-    <variant name="greave0" frequency="1"/>
-    <variant name="greave1">
+    <variant name="xiphos0" frequency="1"/>
+    <variant name="xiphos1">
       <props>
-        <prop actor="props/units/armor/greave_11_bronze_l.xml" attachpoint="leg_L"/>
+        <prop actor="props/units/weapons/sheath_xiphos.xml" attachpoint="sheath_01_L"/>
       </props>
     </variant>
   </group>
