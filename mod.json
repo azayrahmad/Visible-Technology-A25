@@ -1,7 +1,7 @@
 {
-	"name": "visibletech",
+	"name": "Visible-Technology-A25",
 	"version": "0.0.1",
-	"label": "visibletech",
-	"description": "visibletech.",
+	"label": "Visible Technology for 0AD Alpha 25",
+	"description": "Allows the appearance of units and structures to be updated when a technology is researched.",
 	"dependencies": ["0ad=0.0.25"]
 }
