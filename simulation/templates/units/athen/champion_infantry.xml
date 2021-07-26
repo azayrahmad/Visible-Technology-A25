@@ -7,8 +7,8 @@
   </Identity>
   <VisibleTechnology>
     <xiphos>
-		<RequiredTechnology>soldier_attack_melee_01</RequiredTechnology>
-	</xiphos>
+      <RequiredTechnology>soldier_attack_melee_01</RequiredTechnology>
+    </xiphos>
   </VisibleTechnology>
   <VisualActor>
     <Actor>units/athenians/infantry_spearman_c.xml</Actor>
